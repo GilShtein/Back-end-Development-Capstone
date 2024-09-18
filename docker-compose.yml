@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: capstone_postgres
+    container_name: capstone_postgres_django
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Yadmor91
