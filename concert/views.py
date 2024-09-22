@@ -36,11 +36,15 @@ def index(request):
 
 
 def songs(request):
+    '''
     songs = {"songs": [{"id":1,"title":"duis faucibus accumsan odio curabitur convallis","lyrics":"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."}]}
     return render(request, "songs.html", {"songs":songs["songs"]})
-
+    '''
+    songs = req.get("http://songs-sn-labs-gilstein.labs-prod-openshift-san-a45631dc5778dc6371c67d206ba9ae5c-0000.us-east.containers.appdomain.cloud/songs").json()
+    return render(request, "songs.html", {"songs": songs["songs"]})
 
 def photos(request):
+    '''
     photos = [{
             "id": 1,
             "pic_url": "http://dummyimage.com/136x100.png/5fa2dd/ffffff",
@@ -50,6 +54,10 @@ def photos(request):
             "event_date": "11/16/2022"
         }]
     return render(request, "photos.html", {"photos": photos})
+    '''
+    photos = req.get("https://pictures.1m4vhbiuzk1a.us-south.codeengine.appdomain.cloud/picture").json()
+    return render(request, "photos.html", {"photos": photos})
+
 
 def login_view(request):
     if request.method == "POST":
